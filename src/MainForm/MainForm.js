@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Feature from '../Feature/Feature';
+import FeatureItem from '../FeatureItem/FeatureItem';
 import './MainForm.css';
 
 class MainForm extends Component {
@@ -12,19 +13,7 @@ class MainForm extends Component {
 						: '';
 				const featureClass = 'feature__option ' + selectedClass;
 				return (
-					<li key={index} className="feature__item">
-						<div
-							className={featureClass}
-							onClick={e => this.props.updateFeature(key, item)}
-						>
-							{item.name}(
-							{new Intl.NumberFormat('en-US', {
-								style: 'currency',
-								currency: 'USD'
-							}).format(item.cost)}
-							)
-						</div>
-					</li>
+					<FeatureItem key={index} featureClassName={featureClass} updateFeature={this.props.updateFeature} updateFeatureKey={key} updateFeatureItem={item} itemName={item.name} itemCost={item.cost}/>
 				);
 			});
 
